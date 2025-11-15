@@ -1,0 +1,71 @@
+{
+  "name": "laravel-electron",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "cross-env NODE_ENV=development electron .",
+    "prod": "cross-env NODE_ENV=production electron .",
+    "build": "electron-builder",
+    "build:win": "electron-builder --win --publish=never",
+    "build:mac": "electron-builder --mac", 
+    "build:linux": "electron-builder --linux",
+    "build:all": "electron-builder --win --mac --linux",
+    "dist": "npm run build",
+    "clean": "rimraf dist",
+    "rebuild": "npm run clean && npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "electron": "^38.4.0",
+    "electron-builder": "^24.9.1",
+    "rimraf": "^5.0.5",
+    "cross-env": "^7.0.3"
+  },
+  "build": {
+    "appId": "com.dreamy.school.management",
+    "productName": "Dreamy School Management",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "package.json",
+      "config.js"
+    ],
+    "win": {
+      "target": "portable",
+      "icon": "build/icon.ico"
+    },
+    "mac": {
+      "target": "dmg",
+      "sign": false
+    },
+    "linux": {
+      "target": "AppImage"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "allowElevation": false,
+      "warningsAsErrors": false,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Dreamy School Management",
+      "menuCategory": "Dreamy School",
+      "installerIcon": "build/icon.ico",
+      "uninstallerIcon": "build/icon.ico",
+      "installerHeaderIcon": "build/icon.ico",
+      "deleteAppDataOnUninstall": false,
+      "runAfterFinish": false,
+      "installerSidebar": null,
+      "installerLanguages": ["en_US"]
+    },
+    "forceCodeSigning": false
+  }
+}
